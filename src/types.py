@@ -12,7 +12,11 @@ class Interfaz():
         pass
 
 class Item:
-    pass
+    def __init__(self, name, quality, sellIn):
+        self.name = name
+        self.quality = quality
+        self.sellIn = sellIn
+        
 class NormalItem(Interfaz,Item):
     pass
 class Sulfuras(NormalItem):
