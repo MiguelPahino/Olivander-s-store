@@ -29,7 +29,19 @@ class Item:
 
         
 class NormalItem(Interfaz,Item):
-    pass
+    def setSellIn(self):
+        self.sellIn -= 1
+
+    def setQuality(self,quantity):
+        self.quality -= quantity
+        
+    def updateQuality(self):
+        self.setSellIn
+        if self.sellIn > 0:
+            self.setQuality(1)
+        else:
+            self.setQuality(2)
+        
 
         
 class Sulfuras(NormalItem):
