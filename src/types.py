@@ -19,11 +19,11 @@ class Item:
         self.sellIn = sellIn
     
     @property
-    def getQuality(self):
+    def quality(self):
         return self._quality
 
-    @getQuality.setter
-    def qualitySetter(self,quality):
+    @quality.setter
+    def quality(self,quality):
         self._quality = max(0,min(50,quality))
 
 
@@ -52,3 +52,8 @@ class Backstage(NormalItem):
     pass
 class AgedBrie(NormalItem):
     pass
+
+if __name__ == "__main__":
+
+    elixir = NormalItem("elixir",60,20)
+    print(elixir.quality)
