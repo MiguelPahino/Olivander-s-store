@@ -29,14 +29,14 @@ class Item:
 
         
 class NormalItem(Interfaz,Item):
-    def setSellIn(self,quantity):
-        self.sellIn -= quantity
+    def setSellIn(self):
+        self.sellIn -= 1
 
     def setQuality(self,quantity):
         self.quality -= quantity
         
     def updateQuality(self):
-        self.setSellIn(1)
+        self.setSellIn()
         if self.sellIn > 0:
             self.setQuality(1)
         else:
@@ -56,7 +56,9 @@ class Conjured(NormalItem):
 class Backstage(NormalItem):
     pass
 class AgedBrie(NormalItem):
-    pass
+    def updateQuality(self):
+        self.setSellIn(1)
+        self.setQualityQuality(-1)
     
 
 if __name__ == "__main__":
