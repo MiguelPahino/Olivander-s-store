@@ -15,7 +15,7 @@ class Interfaz():
 class Item:
     def __init__(self, name, quality, sellIn):
         self.name = name
-        self.quality = quality
+        self.quality= quality
         self.sellIn = sellIn
     
     @property
@@ -29,14 +29,14 @@ class Item:
 
         
 class NormalItem(Interfaz,Item):
-    def setSellIn(self):
-        self.sellIn -= 1
+    def setSellIn(self,quantity):
+        self.sellIn -= quantity
 
     def setQuality(self,quantity):
         self.quality -= quantity
         
     def updateQuality(self):
-        self.setSellIn
+        self.setSellIn(1)
         if self.sellIn > 0:
             self.setQuality(1)
         else:
@@ -44,14 +44,20 @@ class NormalItem(Interfaz,Item):
         
 
         
-class Sulfuras(NormalItem):
-    pass
+class Sulfuras(Interfaz):
+    def __init__(self):
+        self.name = "Sulfuras"
+        self.quality = 80
+        self.sellIn = 0
+
 class Conjured(NormalItem):
     pass
+
 class Backstage(NormalItem):
     pass
 class AgedBrie(NormalItem):
     pass
+    
 
 if __name__ == "__main__":
 
