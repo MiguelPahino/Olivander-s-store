@@ -54,14 +54,22 @@ class Conjured(NormalItem):
     pass
 
 class Backstage(NormalItem):
-    pass
+    def updateQuality(self):
+        self.setSellIn()
+        if self.sellIn == 0:
+            self.quality = 0
+        elif self.sellIn <= 5:
+            self.setQuality(-3)
+        elif self.sellIn <= 10:
+            self.setQuality(-2)
+        else:
+            self.setQuality(-1)
+
 class AgedBrie(NormalItem):
     def updateQuality(self):
         self.setSellIn(1)
-        self.setQualityQuality(-1)
+        if self.sellIn > 0:
+            self.setQuality(-1)
+        else:
+            self.setQuality(-2)
     
-
-if __name__ == "__main__":
-
-    elixir = NormalItem("elixir",60,20)
-    print(elixir.quality)
