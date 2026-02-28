@@ -68,7 +68,7 @@ class NormalItem(Interfaz,Item):
         
 class Sulfuras(Interfaz):
     def __init__(self):
-        self.name = "Sulfuras"
+        self.name = "Sulfuras, Hand of Ragnaros"
         self.quality = 80
         self.sellIn = 0
 
