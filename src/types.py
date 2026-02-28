@@ -18,6 +18,11 @@ class OllivanderShop():
     
     def inventory(self):
         return self.items
+    
+    def nextDay(self):
+        for item in self.items:
+            item.updateQuality()
+            print(item.toString())
 
     
 class Interfaz():
@@ -62,7 +67,7 @@ class NormalItem(Interfaz,Item):
         return self.sellIn
         
     def toString(self):
-        return 'name= ${self.name}, sell_in= ${self.sellIn}, quality= ${self.quality}'
+        return f'name= {self.name}, sell_in= {self.sellIn}, quality= {self.quality}'
         
 
         
@@ -79,7 +84,7 @@ class Sulfuras(Interfaz):
         return self.sellIn
     
     def toString(self):
-        return 'name= ${self.name}, sell_in= ${self.sellIn}, quality= ${self.quality}'
+        return f'name= {self.name}, sell_in= {self.sellIn}, quality= {self.quality}'
 
 class Conjured(NormalItem):
     def updateQuality(self):
