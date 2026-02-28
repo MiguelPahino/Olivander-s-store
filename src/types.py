@@ -1,11 +1,24 @@
 class OllivanderShop():
 
-    def __init__(self,items):
-        self.items = items
+    def __init__(self):
+        self.items = []
 
     def updateQuality(self):
         for item in self.items:
             item.updateQuality()
+
+    def addItem(self,item):
+        self.items.append(item)
+
+    def toString(self):
+        representation = ""
+        for item in self.items:
+            representation += item.toString()
+        return representation
+    
+    def inventory(self):
+        return self.items
+
     
 class Interfaz():
     def updateQuality(self):
@@ -13,7 +26,7 @@ class Interfaz():
 
 
 class Item:
-    def __init__(self, name, quality, sellIn):
+    def __init__(self, name, sellIn, quality):
         self.name = name
         self.quality= quality
         self.sellIn = sellIn
@@ -41,6 +54,15 @@ class NormalItem(Interfaz,Item):
             self.setQuality(1)
         else:
             self.setQuality(2)
+
+    def get_quality(self):
+        return self.quality
+
+    def get_sell_in(self):
+        return self.sellIn
+        
+    def toString(self):
+        return 'name= ${self.name}, sell_in= ${self.sellIn}, quality= ${self.quality}'
         
 
         
@@ -49,6 +71,15 @@ class Sulfuras(Interfaz):
         self.name = "Sulfuras"
         self.quality = 80
         self.sellIn = 0
+
+    def get_quality(self):
+        return self.quality
+
+    def get_sell_in(self):
+        return self.sellIn
+    
+    def toString(self):
+        return 'name= ${self.name}, sell_in= ${self.sellIn}, quality= ${self.quality}'
 
 class Conjured(NormalItem):
     def updateQuality(self):
@@ -61,9 +92,9 @@ class Conjured(NormalItem):
 class Backstage(NormalItem):
     def updateQuality(self):
         self.setSellIn()
-        if self.sellIn == 0:
+        if self.sellIn <= 0:
             self.quality = 0
-        elif self.sellIn <= 5:
+        elif self.sellIn < 5:
             self.setQuality(-3)
         elif self.sellIn <= 10:
             self.setQuality(-2)
@@ -72,7 +103,7 @@ class Backstage(NormalItem):
 
 class AgedBrie(NormalItem):
     def updateQuality(self):
-        self.setSellIn(1)
+        self.setSellIn()
         if self.sellIn > 0:
             self.setQuality(-1)
         else:
