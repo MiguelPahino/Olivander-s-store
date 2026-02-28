@@ -2,9 +2,9 @@ import pytest
 from typing import Any
 
 try:
-    from src.types import GildedRose, NormalItem, AgedBrie
+    from src.types import OllivanderShop, NormalItem, AgedBrie
 except Exception:
-    GildedRose = NormalItem = AgedBrie = None
+    OllivanderShop = NormalItem = AgedBrie = None
 
 
 def _read(obj: Any, *names):
@@ -24,9 +24,9 @@ def _call(obj: Any, *names):
 
 
 def test_to_string():
-    if GildedRose is None or AgedBrie is None:
-        pytest.skip('GildedRose/AgedBrie classes not available in src.types')
-    shop = GildedRose()
+    if OllivanderShop is None or AgedBrie is None:
+        pytest.skip('OllivanderShop/AgedBrie classes not available in src.types')
+    shop = OllivanderShop()
     brie = AgedBrie("Aged Brie", 2, 0)
     shop.addItem(brie)
     brie = AgedBrie("Aged Brie", 10, 10)
@@ -39,9 +39,9 @@ def test_to_string():
 
 
 def test_add_item():
-    if GildedRose is None or NormalItem is None or AgedBrie is None:
+    if OllivanderShop is None or NormalItem is None or AgedBrie is None:
         pytest.skip('Required classes not available in src.types')
-    shop = GildedRose()
+    shop = OllivanderShop()
     normal = NormalItem("+5 Dexterity Vest", 10, 20)
     brie = AgedBrie("Aged Brie", 2, 0)
     shop.addItem(normal)
@@ -58,9 +58,9 @@ def test_add_item():
 
 
 def test_update_quality():
-    if GildedRose is None or NormalItem is None or AgedBrie is None:
+    if OllivanderShop is None or NormalItem is None or AgedBrie is None:
         pytest.skip('Required classes not available in src.types')
-    shop = GildedRose()
+    shop = OllivanderShop()
     normal = NormalItem("+5 Dexterity Vest", 10, 20)
     brie = AgedBrie("Aged Brie", 2, 0)
     shop.addItem(normal)

@@ -26,7 +26,7 @@ def _call(obj: Any, *names):
 def test_crear_sulfuras():
     if Sulfuras is None:
         pytest.skip('Sulfuras class not available in src.types')
-    s = Sulfuras("Sulfuras, Hand of Ragnaros", 0, 80)
+    s = Sulfuras()
     name = _read(s, 'getName', 'get_name', 'name')
     sell_in = _read(s, 'getSell_in', 'get_sell_in', 'sell_in')
     quality = _read(s, 'getQuality', 'get_quality', 'quality')
@@ -38,7 +38,7 @@ def test_crear_sulfuras():
 def test_to_string():
     if Sulfuras is None:
         pytest.skip('Sulfuras class not available in src.types')
-    s = Sulfuras("Sulfuras, Hand of Ragnaros", 0, 80)
+    s = Sulfuras()
     print("Sulfuras toString() test")
     if hasattr(s, 'toString'):
         print(s.toString())
@@ -49,7 +49,7 @@ def test_to_string():
 def test_update_quality_sulfuras():
     if Sulfuras is None:
         pytest.skip('Sulfuras class not available in src.types')
-    s = Sulfuras("Sulfuras, Hand of Ragnaros", 0, 80)
+    s = Sulfuras()
     _call(s, 'updateQuality', 'update_quality')
     sell_in = _read(s, 'getSell_in', 'get_sell_in', 'sell_in')
     quality = _read(s, 'getQuality', 'get_quality', 'quality')
