@@ -2,7 +2,7 @@ import pytest
 from typing import Any
 
 try:
-    from src.types import Item
+    from src.types import NormalItem
 except Exception:
     Item = None
 
@@ -16,9 +16,9 @@ def _read(obj: Any, *names):
 
 
 def test_crear_item():
-    if Item is None:
+    if NormalItem is None:
         pytest.skip('Item class not available in src.types')
-    item = Item("+5 Dexterity Vest", 10, 20)
+    item = NormalItem("+5 Dexterity Vest", 10, 20)
     name = _read(item, 'getName', 'get_name', 'name')
     sell_in = _read(item, 'getSell_in', 'get_sell_in', 'sell_in')
     quality = _read(item, 'getQuality', 'get_quality', 'quality')
